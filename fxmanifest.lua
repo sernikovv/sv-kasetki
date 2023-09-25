@@ -15,5 +15,6 @@ server_script 'server.lua'
 
 dependency {
     'ox_lib',
-    'ox_inventory'
+    'ox_inventory',
+    'esx_dispatch'
 }
