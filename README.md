@@ -2,6 +2,6 @@
 
 Prosty skrypt na okradanie kasetek
 
-Preview: soon
+Preview: [Preview](https://www.youtube.com/watch?v=pktOns_X7m8)
 
 Discord: https://discord.gg/XNTqS4cFBU
