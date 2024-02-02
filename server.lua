@@ -20,6 +20,21 @@ ESX.RegisterServerCallback('sv-kasetki:police-count', function(source, cb)
     end
 end)
 
+ESX.RegisterServerCallback('sv-kasetki:startCooldown', function(source, cb)
+    if not cooldownActive then
+        local playerId = source
+        cooldownActive = true
+
+        SetTimeout(60 * 1000, function()
+            cooldownActive = false
+        end)
+
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
 RegisterNetEvent('sv-kasetki:reward', function()
     local random = math.random(300,1000)
     local cancarryitem = exports.ox_inventory:CanCarryItem(source, 'black_money', random)
