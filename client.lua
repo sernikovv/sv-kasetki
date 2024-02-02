@@ -25,18 +25,25 @@ kasetkastart = function ()
     if cooldown == false then
             ESX.TriggerServerCallback('sv-kasetki:police-count', function(status)
                 if status then
-                    local success = lib.skillCheck({'easy', 'easy', {areaSize = 60, speedMultiplier = 2}, 'medium'}, {'w', 'a', 's', 'd'})
+                    ESX.TriggerServerCallback('sv-kasetki:startCooldown', function(success)
+                        if success then
+                            local success = lib.skillCheck({'easy', 'easy', {areaSize = 60, speedMultiplier = 2}, 'medium'}, {'w', 'a', 's', 'd'})
 
-                    if success then
-                        ESX.ShowNotification('Otworzyłeś kasetke')
-                        policealert()
-                        kasetkaopen()
-                        cooldown = true
-                        Wait(1000 * cooldowntime)
-                        cooldown = false
-                    else
-                        ESX.ShowNotification('Nie udało ci się otworzyć kasetki')
-                    end
+                            if success then
+                                ESX.ShowNotification('Otworzyłeś kasetke')
+                                policealert()
+                                kasetkaopen()
+                                cooldown = true
+                                Wait(1000 * cooldowntime)
+                                cooldown = false
+                            else
+                                ESX.ShowNotification('Nie udało ci się otworzyć kasetki')
+                            end
+        
+                          else
+                            ESX.ShowNotification('Musisz odczekać zanim znowu otworzysz kasetke')
+                        end
+                    end)
                 end
             end)
         else
